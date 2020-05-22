@@ -1,18 +1,22 @@
-﻿using Newtonsoft.Json;
+﻿using ConceptMatrix;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Windows.Documents;
 
-namespace BurningDowntheHouse.Services
+namespace BurningDownTheHouse.Services
 {
-	public class OffsetService : IService
+	public class OffsetsService : IService
 	{
 		private static readonly string FileName = "offsets.json";
 		private static readonly string Url = $"https://raw.githubusercontent.com/LeonBlade/BurningDownTheHouse/master/BurningDownTheHouse/{FileName}";
 		private static readonly string LocalOffsetFile = Path.Combine(Environment.CurrentDirectory, FileName);
 
-		public OffsetFile Offsets { get; private set; } = null;
+		public static OffsetFile Offsets { get; private set; } = null;
 
 		public async Task Initialize()
 		{
@@ -80,9 +84,32 @@ namespace BurningDowntheHouse.Services
 			return Task.CompletedTask;
 		}
 
-		public Task Dispose()
+		public Task Shutdown()
 		{
 			return Task.CompletedTask;
+		}
+
+		public ulong[] Get(string propName)
+		{
+			foreach (var prop in Offsets.GetType().GetProperties())
+			{
+				if (prop.PropertyType == typeof(string) && prop.Name == propName)
+				{
+					var val = (string)prop.GetValue(Offsets);
+					if (val.IndexOf(',') > -1)
+					{
+						var retArr = new List<ulong>();
+						var arr = val.Split(',');
+						foreach (var s in arr)
+							retArr.Add(Convert.ToUInt64(s, 16));
+						return retArr.ToArray();
+					}
+
+					return new ulong[] { Convert.ToUInt64(val, 16) };
+				}
+			}
+
+			throw new Exception($"No property with that name: {propName}");
 		}
 	}
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BurningDowntheHouse.Properties
+namespace BurningDownTheDown.Properties
 {
 
 

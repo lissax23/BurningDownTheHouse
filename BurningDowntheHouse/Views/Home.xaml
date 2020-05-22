@@ -1,0 +1,18 @@
+﻿<UserControl x:Class="BurningDownTheHouse.Views.Home"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+			 xmlns:cm3Controls="clr-namespace:ConceptMatrix.WpfStyles.Controls;assembly=Styles"
+             xmlns:local="clr-namespace:BurningDownTheHouse.Views"
+             mc:Ignorable="d">
+	<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+		<StackPanel>
+			<StackPanel Orientation="Horizontal" Margin="0,0,0,8">
+				<TextBlock Text="Place Anywhere" Foreground="{DynamicResource MaterialDesignBody}" Margin="0,0,8,0" />
+				<ToggleButton />
+			</StackPanel>
+			<cm3Controls:VectorEditor Value="{Binding Position}" Minimum="-1000" Maximum="1000" />
+		</StackPanel>
+	</Grid>
+</UserControl>

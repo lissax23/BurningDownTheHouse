@@ -1,12 +1,20 @@
-﻿using System;
+﻿using BurningDownTheHouse.Services;
+using ConceptMatrix;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace BurningDowntheHouse.Services
+namespace BurningDownTheHouse
 {
-	public class ServiceManager
+	public class ServiceManager : IServices
 	{
-		private List<IService> services = new List<IService>();
+		private readonly List<IService> services = new List<IService>();
+
+		public ServiceManager()
+		{
+			ConceptMatrix.Services.RegisterServicesProvider(this);
+		}
 
 		public delegate void ServiceEvent(string serviceName);
 
@@ -16,24 +24,15 @@ namespace BurningDowntheHouse.Services
 		public bool IsInitialized { get; private set; } = false;
 		public bool IsStarted { get; private set; } = false;
 
-		public T Get<T>()
-			where T : IService
-		{
-			foreach (var service in this.services)
-			{
-				if (typeof(T).IsAssignableFrom(service.GetType()))
-					return (T)service;
-			}
-
-			throw new Exception($"Failed to find services: {typeof(T)}");
-		}
-
-		public async Task Add<T>()
-			where T : IService, new()
+		public async Task Add<T>() where T : IService, new()
 		{
 			try
 			{
+				var sw = new Stopwatch();
+				sw.Start();
+
 				var serviceName = GetServiceName<T>();
+
 				var service = Activator.CreateInstance<T>();
 				this.services.Add(service);
 
@@ -45,11 +44,34 @@ namespace BurningDowntheHouse.Services
 					OnServiceStarting?.Invoke(serviceName);
 					await service.Start();
 				}
+
+				Log.Write($"Added service: {serviceName} in {sw.ElapsedMilliseconds}ms", "Services");
 			}
 			catch (Exception ex)
 			{
 				Log.Write(new Exception($"Failed to initialize service: {typeof(T).Name}", ex));
 			}
+		}
+
+		public T Get<T>() where T : IService
+		{
+			foreach (var service in this.services)
+				if (typeof(T).IsAssignableFrom(service.GetType()))
+					return (T)service;
+
+			throw new Exception($"Failed to find service: {typeof(T)}");
+		}
+
+		public async Task InitializeServices()
+		{
+			await this.Add<InjectionService>();
+			await this.Add<OffsetsService>();
+			await this.Add<SelectedItemService>();
+
+			this.IsInitialized = true;
+			Log.Write("Services Initialized", "Services");
+
+			await this.StartServices();
 		}
 
 		public async Task StartServices()
@@ -66,7 +88,7 @@ namespace BurningDowntheHouse.Services
 		public async Task ShutdownServices()
 		{
 			foreach (var service in this.services)
-				await service.Dispose();
+				await service.Shutdown();
 		}
 
 		private static string GetServiceName<T>()

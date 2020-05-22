@@ -1,6 +1,9 @@
-﻿using System.Windows;
+﻿using BurningDownTheHouse.Services;
+using ConceptMatrix;
+using System.Windows;
+using System.Windows.Input;
 
-namespace BurningDowntheHouse
+namespace BurningDownTheHouse.Views
 {
 	/// <summary>
 	/// Interaction logic for MainWindow.xaml
@@ -12,11 +15,32 @@ namespace BurningDowntheHouse
 			InitializeComponent();
 		}
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+		private void OnTitleBarMouseDown(object sender, MouseButtonEventArgs e)
 		{
-			var offset = App.Services.Get<Services.OffsetService>();
+			if (e.ChangedButton == MouseButton.Left)
+				this.DragMove();
+		}
 
-			Log.Write(offset.Offsets.ActiveItem);
+		private void Window_Activated(object sender, System.EventArgs e)
+		{
+			this.ActiveBorder.Visibility = Visibility.Visible;
+			this.InActiveBorder.Visibility = Visibility.Collapsed;
+		}
+
+		private void Window_Deactivated(object sender, System.EventArgs e)
+		{
+			this.ActiveBorder.Visibility = Visibility.Collapsed;
+			this.InActiveBorder.Visibility = Visibility.Visible;
+		}
+
+		private void OnCloseClick(object sender, RoutedEventArgs e)
+		{
+			this.Close();
+		}
+
+		private void OnMinimizeClick(object sender, RoutedEventArgs e)
+		{
+			this.WindowState = WindowState.Minimized;
 		}
 	}
 }

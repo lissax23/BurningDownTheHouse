@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BurningDowntheHouse
+namespace BurningDownTheHouse
 {
 	[Serializable]
 	public class OffsetFile

@@ -12,7 +12,8 @@
 		TextBlock.Foreground="{DynamicResource MaterialDesignBody}"
 		WindowStyle="None"
 		Activated="Window_Activated"
-		Deactivated="Window_Deactivated">
+		Deactivated="Window_Deactivated"
+		Topmost="True">
 	<Grid Margin="10">
 		<Border Background="{DynamicResource MaterialDesignPaper}"
 				BorderBrush="{DynamicResource PrimaryHueMidBrush}"
@@ -45,7 +46,7 @@
 
 			</Border>
 
-			<Border Grid.Row="1" Grid.Column="1" CornerRadius="0,0,2,2" Background="Transparent" Padding="8">
+			<Border Grid.Row="1" Grid.Column="1" CornerRadius="0,0,2,2"  Background="Transparent" Padding="8">
 				<views:Home />
 			</Border>
 
@@ -59,16 +60,16 @@
 
 					<Image Source="/bdth.ico" Margin="3" Width="25" Height="25" HorizontalAlignment="Left" />
 
-					<TextBlock Text="Burning Down the House" VerticalAlignment="Center" Margin="32,0,0,0" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+					<TextBlock Text="Burning Down the House" VerticalAlignment="Center" Margin="32,0,0,0" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
 
 					<StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
 
 						<Button Margin="3,0,3,0" Width="28" Height="28" Padding="8" Background="Transparent" BorderThickness="0" Click="OnMinimizeClick">
-							<fa:IconBlock Icon="WindowMinimize" Opacity="0.5" FontSize="12" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+							<fa:IconBlock Icon="WindowMinimize" Opacity="0.5" FontSize="12" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
 						</Button>
 
 						<Button Margin="3,0,3,0" Width="28" Height="28" Padding="8" Background="Transparent" BorderThickness="0" Click="OnCloseClick">
-							<fa:IconBlock Icon="Times" Opacity="0.5" FontSize="12" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}"/>
+							<fa:IconBlock Icon="Times" Opacity="0.5" FontSize="12" Foreground="{DynamicResource PrimaryHueMidForegroundBrush}" />
 						</Button>
 
 					</StackPanel>

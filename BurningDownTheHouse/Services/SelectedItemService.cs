@@ -14,7 +14,7 @@ namespace BurningDownTheHouse.Services
 		private IMemory<bool> housingOnMem;
 		private IMemory<byte> itemSelectedMem;
 
-		private ulong lastItemAddress;
+		private ulong lastItemAddress = 69;
 
 		public delegate void SelectedItemEvent(IMemory<Vector> itemPosition);
 

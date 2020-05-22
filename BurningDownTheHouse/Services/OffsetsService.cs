@@ -49,7 +49,7 @@ namespace BurningDownTheHouse.Services
 				}
 				catch (HttpRequestException ex)
 				{
-					// Log.Write(new Exception("Couldn't fetch offsets from online!", ex), "OffsetService");
+					Log.Write(new Exception("Couldn't fetch offsets from online!", ex), "OffsetService");
 				}
 			}
 

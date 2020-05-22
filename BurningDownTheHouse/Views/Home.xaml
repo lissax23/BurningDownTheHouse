@@ -9,7 +9,8 @@
 	<Grid VerticalAlignment="Center" HorizontalAlignment="Center">
 		<StackPanel>
 			<StackPanel Orientation="Horizontal" Margin="0,0,0,8">
-				<TextBlock Text="Place Anywhere" Foreground="{DynamicResource MaterialDesignBody}" Margin="0,0,8,0" />
+				<TextBlock Text="Place Anywhere" Foreground="{DynamicResource MaterialDesignBody}" />
+				<Separator Width="8" Visibility="Hidden" />
 				<ToggleButton IsChecked="{Binding PlaceAnywhere}" />
 			</StackPanel>
 			<cm3Controls:VectorEditor Value="{Binding Position}" Minimum="-1000" Maximum="1000" />

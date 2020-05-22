@@ -1,5 +1,6 @@
 ﻿using BurningDownTheHouse.Services;
 using ConceptMatrix;
+using ConceptMatrix.Injection.Offsets;
 using PropertyChanged;
 using System.Windows.Controls;
 
@@ -12,9 +13,15 @@ namespace BurningDownTheHouse.Views
 	public partial class Home : UserControl
 	{
 		public bool PlaceAnywhere { get; set; }
+
+		[AlsoNotifyFor(nameof(PlaceAnywhere))]
+		[DependsOn(nameof(PlaceAnywhere))]
+		public bool WallPartition { get => PlaceAnywhere; set => PlaceAnywhere = value; }
 		public Vector Position { get; set; }
 
 		private IMemory<Vector> itemPosition;
+		private IMemory<bool> placeAnywhere;
+		private IMemory<bool> wallPartition;
 
 		public Home()
 		{
@@ -25,6 +32,15 @@ namespace BurningDownTheHouse.Views
 			var selection = App.Services.Get<SelectedItemService>();
 			// Listen for when the selected item changes.
 			selection.SelectionChanged += this.SelectionChanged;
+
+			// Get the offsets service.
+			var offsets = App.Services.Get<OffsetsService>();
+
+			placeAnywhere = new BaseOffset<bool>(offsets.Get("PlaceAnywhere")).GetMemory();
+			wallPartition = new BaseOffset<bool>(offsets.Get("WallPartition")).GetMemory();
+
+			placeAnywhere.Bind(this, nameof(PlaceAnywhere));
+			wallPartition.Bind(this, nameof(WallPartition));
 		}
 
 		private void SelectionChanged(IMemory<Vector> itemPosition)

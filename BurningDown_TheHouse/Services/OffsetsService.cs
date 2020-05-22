@@ -1,12 +1,11 @@
-﻿using ConceptMatrix;
+﻿using BurningDownTheHouse.Files;
+using ConceptMatrix;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
-using System.Reflection;
 using System.Threading.Tasks;
-using System.Windows.Documents;
 
 namespace BurningDownTheHouse.Services
 {
@@ -16,7 +15,7 @@ namespace BurningDownTheHouse.Services
 		private static readonly string Url = $"https://raw.githubusercontent.com/LeonBlade/BurningDownTheHouse/master/BurningDownTheHouse/{FileName}";
 		private static readonly string LocalOffsetFile = Path.Combine(Environment.CurrentDirectory, FileName);
 
-		public static OffsetFile Offsets { get; private set; } = null;
+		public OffsetFile Offsets { get; private set; } = null;
 
 		public async Task Initialize()
 		{
@@ -50,7 +49,7 @@ namespace BurningDownTheHouse.Services
 				}
 				catch (HttpRequestException ex)
 				{
-					Log.Write(new Exception("Couldn't fetch offsets from online!", ex), "OffsetService");
+					// Log.Write(new Exception("Couldn't fetch offsets from online!", ex), "OffsetService");
 				}
 			}
 

@@ -1,4 +1,6 @@
-﻿using ConceptMatrix;
+﻿using BurningDownTheHouse.Services;
+using BurningDownTheHouse.Views;
+using ConceptMatrix;
 using System;
 using System.Runtime.ExceptionServices;
 using System.Threading.Tasks;
@@ -31,7 +33,7 @@ namespace BurningDownTheHouse
 
 		private void OnException(ExceptionDispatchInfo ex, Log.Severity severity, string category)
 		{
-			MessageBox.Show(ex.SourceException.Message);
+			ErrorDialog.ShowError(ex, severity == Log.Severity.Critical);
 		}
 
 		private void TaskScheduler_UnobservedTaskException(object sender, UnobservedTaskExceptionEventArgs e)
@@ -62,7 +64,7 @@ namespace BurningDownTheHouse
 
 				Current.Dispatcher.Invoke(() =>
 				{
-					this.MainWindow = new Views.MainWindow();
+					this.MainWindow = new MainWindow();
 					this.MainWindow.Show();
 				});
 			}

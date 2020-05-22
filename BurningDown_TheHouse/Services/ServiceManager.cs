@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 
-namespace BurningDownTheHouse
+namespace BurningDownTheHouse.Services
 {
 	public class ServiceManager : IServices
 	{

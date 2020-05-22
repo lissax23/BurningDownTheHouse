@@ -39,7 +39,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="offsets.json">
+    <None Update="bdth_offsets.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

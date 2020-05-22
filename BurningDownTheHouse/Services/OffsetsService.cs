@@ -11,7 +11,7 @@ namespace BurningDownTheHouse.Services
 {
 	public class OffsetsService : IService
 	{
-		private static readonly string FileName = "offsets.json";
+		private static readonly string FileName = "bdth_offsets.json";
 		private static readonly string Url = $"https://raw.githubusercontent.com/LeonBlade/BurningDownTheHouse/master/BurningDownTheHouse/{FileName}";
 		private static readonly string LocalOffsetFile = Path.Combine(Environment.CurrentDirectory, FileName);
 

@@ -1,11 +1,10 @@
 ﻿using BurningDownTheHouse.Files;
-using ConceptMatrix;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using System.Threading.Tasks;
+using ConceptMatrix;
 
 namespace BurningDownTheHouse.Services
 {
@@ -78,6 +77,26 @@ namespace BurningDownTheHouse.Services
 				throw new Exception("Wasn't able to resolve any offsets");
 		}
 
+		private async Task<string> FetchOffsets()
+		{
+			// Fetch latest offsets from online.
+			using (var client = new HttpClient())
+			{
+				try
+				{
+					var response = await client.GetAsync(Url);
+					response.EnsureSuccessStatusCode();
+					return await response.Content.ReadAsStringAsync();
+				}
+				catch (HttpRequestException ex)
+				{
+					Log.Write(new Exception("Couldn't fetch offsets from online!", ex), "OffsetService");
+				}
+
+				return null;
+			}
+		}
+
 		public Task Start()
 		{
 			return Task.CompletedTask;
@@ -86,29 +105,6 @@ namespace BurningDownTheHouse.Services
 		public Task Shutdown()
 		{
 			return Task.CompletedTask;
-		}
-
-		public ulong[] Get(string propName)
-		{
-			foreach (var prop in Offsets.GetType().GetProperties())
-			{
-				if (prop.PropertyType == typeof(string) && prop.Name == propName)
-				{
-					var val = (string)prop.GetValue(Offsets);
-					if (val.IndexOf(',') > -1)
-					{
-						var retArr = new List<ulong>();
-						var arr = val.Split(',');
-						foreach (var s in arr)
-							retArr.Add(Convert.ToUInt64(s, 16));
-						return retArr.ToArray();
-					}
-
-					return new ulong[] { Convert.ToUInt64(val, 16) };
-				}
-			}
-
-			throw new Exception($"No property with that name: {propName}");
 		}
 	}
 }

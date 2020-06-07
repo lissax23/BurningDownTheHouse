@@ -1,6 +1,6 @@
-﻿using ConceptMatrix;
-using ConceptMatrix.Injection.Memory;
-using ConceptMatrix.Injection.Offsets;
+﻿using Anamnesis;
+using Anamnesis.Offsets;
+using ConceptMatrix;
 using System;
 using System.Reflection;
 using System.Threading.Tasks;

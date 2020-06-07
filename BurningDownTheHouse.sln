@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BurningDownTheHouse", "Burn
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "F:\Backup\LeonBlade\Developer\CM3\Core\Core.csproj", "{A6B120DB-11AB-4771-A11F-76E8D3B71868}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Anamnesis", "Anamnesis\Anamnesis.csproj", "{A7A7E56C-BBA6-4C69-A08F-FFFEFE9D99DE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug_NoGame|Any CPU = Debug_NoGame|Any CPU
@@ -26,6 +28,12 @@ Global
 		{A6B120DB-11AB-4771-A11F-76E8D3B71868}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A6B120DB-11AB-4771-A11F-76E8D3B71868}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A6B120DB-11AB-4771-A11F-76E8D3B71868}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7A7E56C-BBA6-4C69-A08F-FFFEFE9D99DE}.Debug_NoGame|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A7E56C-BBA6-4C69-A08F-FFFEFE9D99DE}.Debug_NoGame|Any CPU.Build.0 = Debug|Any CPU
+		{A7A7E56C-BBA6-4C69-A08F-FFFEFE9D99DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7A7E56C-BBA6-4C69-A08F-FFFEFE9D99DE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7A7E56C-BBA6-4C69-A08F-FFFEFE9D99DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7A7E56C-BBA6-4C69-A08F-FFFEFE9D99DE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

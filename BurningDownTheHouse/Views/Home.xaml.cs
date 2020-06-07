@@ -20,8 +20,8 @@ namespace BurningDownTheHouse.Views
 		public Vector Position { get; set; }
 
 		private IMemory<Vector> itemPosition;
-		private IMemory<bool> placeAnywhere;
-		private IMemory<bool> wallPartition;
+		private readonly IMemory<bool> placeAnywhere;
+		private readonly IMemory<bool> wallPartition;
 
 		public Home()
 		{

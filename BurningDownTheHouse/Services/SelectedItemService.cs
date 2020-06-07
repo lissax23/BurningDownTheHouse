@@ -52,7 +52,7 @@ namespace BurningDownTheHouse.Services
 				await Task.Delay(32);
 
 				// Housing is on and item is selected
-				if (this.housingOnMem.Value && this.itemSelectedMem.Value > 0)
+				if (this.housingOnMem.Value)
 				{
 					var baseAddr = new BaseOffset(offsets.Get("ActiveItem"));
 					var position = baseAddr.GetMemory(new Offset<Vector>(offsets.Get("ActiveItemPosition")));

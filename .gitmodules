@@ -1,0 +1,3 @@
+[submodule "Anamnesis"]
+	path = Anamnesis
+	url = git@github.com:imchillin/Anamnesis.git

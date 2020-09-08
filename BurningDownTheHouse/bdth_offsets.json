@@ -1,11 +1,11 @@
 ﻿{
-  "GameVersion": "2020.08.19.0000.0000",
-  "OffsetVersion": 2,
-  "IsHousingOn": "1D59183",
+  "GameVersion": "2020.08.28.0000.0000",
+  "OffsetVersion": 1,
+  "IsHousingOn": "1D5A183",
   "IsItemSelected": "0",
   "PlaceAnywhere": "56F160",
-  "WallPartition": "56FC17",
-  "ActiveItem": "1D0D688",
+  "WallPartition": "56F804",
+  "ActiveItem": "1D0E688",
   "ActiveItemPosition": "40,18,50",
   "MousePosition": "0"
 }

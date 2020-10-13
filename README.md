@@ -16,9 +16,11 @@ In order to move your items you **MUST be in ROTATE mode** and then rotate your 
 ## FAQ
 I have a [FAQ](https://github.com/LeonBlade/BDTHPlugin/wiki/FAQ) section on the BDTHPlugin Github Wiki that should answer all of the same issues.
 
-## Support
-Thank you for using my tool, I'm very grateful to everyone who uses my tools and I enjoy seeing what people do with them. If you wish to support me, you can do so at any of the links below.
+## Final message
+Thank you for using my tool, I'm very grateful to everyone who uses my tools and I enjoy seeing what people do with them. If you wish to support me, you can do so at any of the links below. You can also join at the Discord to ask questions or share your creations.
 
 **Ko-Fi:** https://ko-fi.com/LeonBlade
 
 **Patreon:** https://patreon.com/LeonBlade
+
+**Discord:** https://discord.gg/EenZwsN

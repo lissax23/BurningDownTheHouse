@@ -1,3 +1,5 @@
+# NOTE: Please visit the [plugin](https://github.com/LeonBlade/BDTHPlugin) page to install it instead as I'm currently not maintaining the standalone version.
+
 # Burning Down the House
 
 ![Burning Down the House UI](https://i.imgur.com/9rQ9kOR.png)
